@@ -3,8 +3,8 @@ Fusion
 ======
 
 
-.. image:: https://img.shields.io/pypi/v/fusion.svg
-        :target: https://pypi.python.org/pypi/fusion
+.. image:: https://img.shields.io/pypi/v/kernelfusion.svg
+        :target: https://pypi.python.org/pypi/kernelfusion
 
 .. image:: https://img.shields.io/travis/yngtodd/fusion.svg
         :target: https://travis-ci.org/yngtodd/fusion
