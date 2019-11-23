@@ -13,11 +13,9 @@ Fusion
         :target: https://fusion.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-
 .. image:: https://pyup.io/repos/github/yngtodd/fusion/shield.svg
      :target: https://pyup.io/repos/github/yngtodd/fusion/
      :alt: Updates
-
 
 
 An example kernel fusion Pytorch extension.
