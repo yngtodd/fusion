@@ -17,6 +17,10 @@ Fusion
      :target: https://pyup.io/repos/github/yngtodd/fusion/
      :alt: Updates
 
+.. image:: https://pyup.io/repos/github/yngtodd/fusion/python-3-shield.svg
+     :target: https://pyup.io/repos/github/yngtodd/fusion/
+     :alt: Python 3
+
 
 An example kernel fusion Pytorch extension.
 
