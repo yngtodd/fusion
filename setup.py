@@ -3,7 +3,8 @@
 
 """The setup script."""
 
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, Extension
+from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 
 
 with open('README.rst') as readme_file:
