@@ -4,7 +4,7 @@
 """The setup script."""
 
 from setuptools import setup, find_packages, Extension
-from torch.utils.cpp_extension import BuildExtension, CUDAExtension
+from torch.utils.cpp_extension import BuildExtension, CUDAExtension, CppExtension
 
 
 with open('README.rst') as readme_file:
@@ -44,4 +44,8 @@ setup(
     url='https://github.com/yngtodd/fusion',
     version='0.1.0',
     zip_safe=False,
+    ext_modules=[CppExtension('lltm_cpp', [
+        'fusion/csrc/lltm.cpp',
+    ])],
+    cmd_class={'build_ext': BuildExtension}
 )
