@@ -3,7 +3,8 @@
 
 """The setup script."""
 
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, Extension
+from torch.utils.cpp_extension import BuildExtension, CUDAExtension, CppExtension
 
 
 with open('README.rst') as readme_file:
@@ -12,7 +13,7 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = []
+requirements = ['torch']
 
 setup_requirements = ['pytest-runner', ]
 
@@ -43,4 +44,8 @@ setup(
     url='https://github.com/yngtodd/fusion',
     version='0.1.0',
     zip_safe=False,
+    ext_modules=[CppExtension('lltm_cpp', [
+        'fusion/csrc/lltm.cpp',
+    ])],
+    cmd_class={'build_ext': BuildExtension}
 )
