@@ -4,7 +4,7 @@
 
 // Derivative of the sigmoid function
 torch::Tensor d_sigmoid(torch::Tensor z) {
-  auto s = torch::Sigmoid(z);
+  auto s = torch::sigmoid(z);
   return (1 - s) * s;
 }
 
@@ -23,7 +23,7 @@ torch::Tensor d_elu(torch::Tensor z, torch::Scalar alpha = 1.0) {
 }
 
 // Forward pass of the LLTM function
-std::vector lltm_forward(
+std::vector<at::Tensor> lltm_forward(
     torch::Tensor input,
     torch::Tensor weights,
     torch::Tensor bias,
@@ -70,7 +70,7 @@ std::vector<torch::Tensor> lltm_backward(
   auto d_candidate_cell = input_gate * d_new_cell;
   auto d_input_gate = candidate_cell * d_new_cell;
 
-  auto gates = 
+  auto d_gates = 
     torch::cat({d_input_gate, d_output_gate, d_candidate_cell}, /*dim=*/1);
 
   auto d_weights = d_gates.t().mm(X);
@@ -79,7 +79,7 @@ std::vector<torch::Tensor> lltm_backward(
   auto d_X = d_gates.mm(weights);
   const auto state_size = grad_h.size(1);
   auto d_old_h = d_X.slice(/*dim=*/1, 0, state_size);
-  auto d_input = d_X.slize(/*dim=*/1, state_size);
+  auto d_input = d_X.slice(/*dim=*/1, state_size);
 
   return {d_old_h, d_input, d_weights, d_bias, d_old_cell};
 }
